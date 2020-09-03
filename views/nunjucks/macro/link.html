@@ -1,0 +1,10 @@
+{# 
+    href : 태그안의 링크
+    text : 링크안에 들어갈 텍스트
+    current_url : 현재 url
+ #}
+{% macro link(  href , text , current_url ) %}
+	<a href="{{ href }}" class="block mt-4 space-x-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+		{{text}}
+	</a>
+{% endmacro %}

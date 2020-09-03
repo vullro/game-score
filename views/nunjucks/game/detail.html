@@ -1,0 +1,28 @@
+{% set title = "상세페이지" %}
+{% extends "layout/base.html" %}
+
+{% block content -%}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>{{ game.name }}</h3>
+        </div>
+        <div class="panel-body">
+          <table class="table table-bordered table-hover">
+            <tr>
+              <th>작성일</th>
+              <td>{{ game.dateFormat( game.createdAt ) }}</td>
+            </tr>
+            <tr>
+              <th>게임방식</th>
+              <td>{{game.type}}</td>
+            </tr>
+            <tr>
+              <td colspan="2">{{ game.description }}</td>
+          </table>
+        </div>
+    </div>
+
+    <a href="/game" class="btn btn-info">목록으로</a>
+    <a href="/game/edit/{{ game.name }}" class="btn btn-primary">수정</a>
+
+{% endblock %} 

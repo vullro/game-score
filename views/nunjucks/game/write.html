@@ -1,0 +1,45 @@
+{% set title = "Game write" %} {% extends "layout/base.html" %} {% block content -%}
+<form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg mx-auto" action="" method="post">
+	<div class="flex flex-wrap -mx-3 mb-6">
+		<div class="w-full px-3 mb-6 md:mb-0">
+			<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+				Game 명
+			</label>
+			<input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" name="name" type="text" placeholder="당구" value="{{ game.name }}">
+		</div>
+	</div>
+	<div class="flex flex-wrap -mx-3 mb-2">
+		<div class="w-full px-3 mb-6 md:mb-0">
+			<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+				Game 방식
+			</label>
+			<div class="relative">
+				<select class="block appearance-none w-full bg-gray-200 border border-gray-500 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state" name="type">
+                      <option value="">--Please choose an option--</option>
+                      <option value="승패제" {% if game.type == "승패제" %} selected="selected" {% endif %} >승패제</option>
+                      <option value="득점제" {% if game.type == "득점제" %} selected="selected" {% endif %} >득점제</option>
+                      <option value="순위제" {% if game.type == "순위제" %} selected="selected" {% endif %} >순위제</option>
+				</select>
+				<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+				<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="flex flex-wrap -mx-3 mb-2">
+		<div class="w-full px-3 mb-6 md:mb-0">
+				<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">설명</label>
+				<textarea placeholder="hey" class="block appearance-none w-full bg-gray-200 border border-gray-500 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-64" name="description"  value="{{game.description}}"></textarea>
+		</div>
+	</div>	
+		{% if isEdit %}
+			<button class="btn btn-primary">수정하기</button>
+        {% else %}
+		<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+  		작성하기
+		</button>			
+		{% endif %}	
+</form>
+
+
+{% endblock %}
